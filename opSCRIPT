@@ -1,6 +1,6 @@
 local UILibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/twink"))()
 
-local MainUI = UILibrary.Load("")
+local MainUI = UILibrary.Load("The Rake Fan Remake")
 local FirstPage = MainUI.AddPage("Home")
 --local SecondPage = MainUI.AddPage("Teleports")
 
@@ -109,12 +109,19 @@ FirstPage.AddButton("Timer", function()
 
 		while true do wait(1)
 			local timer = game.Workspace.Info.Timer.Value
-			if standard == "Day" then
-				hamu = " Night"
+			
+			if timer ~=270 then
+				if standard == "Day" then
+					hamu = " Night"
+				else
+					hamu = " Day"
+				end
+				text.Text = timer.."s".." into the"..hamu
+				
 			else
-				hamu = " Day"
-			end
-			text.Text = timer.."s".." into the"..hamu
+				text.Text = timer.."s".." into the"..hamu.."(Now you can defeat Rake)"
+				wait(3)
+			end		
 		end
 	end
 	coroutine.wrap(KJQHOAV_fake_script)()
@@ -216,7 +223,7 @@ FirstPage.AddButton("Flare Esp", function()
 		for i,v in pairs (game.Players:GetChildren()) do
 			wait()
 			if v ~= game:GetService("Players").LocalPlayer then
-				if v.Backpack:FindFirstChild("FlareGun") or v.Character:FindFirstChild("FlareGun")  then
+				if not v.Character:FindFirstChild("主播唢呐没法愉悦送走你吗") and v.Backpack:FindFirstChild("FlareGun") and not v.Character.HumanoidRootPart:FindFirstChild("BillboardGui") then
 
 					local hl =Instance.new("Highlight",v.Character)
 					hl.Name = "主播唢呐没法愉悦送走你吗"
@@ -249,7 +256,10 @@ FirstPage.AddButton("Flare Esp", function()
 					TextLabel.TextSize = 14.000
 					TextLabel.Text = "The Player Has A Flare Gun"
 					--
-				
+				elseif v.Character:FindFirstChild("主播唢呐没法愉悦送走你吗") and not v.Backpack:FindFirstChild("FlareGun") then
+					v.Character:FindFirstChild("主播唢呐没法愉悦送走你吗"):Destroy()
+					v.Character.HumanoidRootPart:FindFirstChild("BillboardGui"):Destroy()
+					
 				end
 				
 			end
@@ -275,6 +285,43 @@ end)
 FirstPage.AddButton("Inf Yield",function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
+
+FirstPage.AddButton("Traps Esp",function()
+	local esp_settings = { ---- table for esp settings 
+	    textsize = 12,
+	    colour = 0,0,0
+	}
+	 
+	local gui = Instance.new("BillboardGui")
+	local esp = Instance.new("TextLabel",gui) ---- new instances to make the billboard gui and the textlabel
+	 
+	 
+	 
+	gui.Name = "esp"; ---- properties of the esp
+	gui.ResetOnSpawn = false
+	gui.AlwaysOnTop = true;
+	gui.LightInfluence = 0;
+	gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+	esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	esp.Text = ""
+	esp.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+	esp.BorderSizePixel = 4;
+	esp.BorderColor3 = Color3.new(esp_settings.colour)
+	esp.BorderSizePixel = 0
+	esp.Font = "GothamSemibold"
+	esp.TextSize = esp_settings.textsize
+	esp.TextColor3 = Color3.fromRGB(esp_settings.colour) -- text colour
+	 
+	game:GetService("RunService").RenderStepped:Connect(function() ---- loops faster than a while loop :)
+	    for i,v in pairs (game.Workspace:GetChildren()) do
+	        if  v:FindFirstChild("esp")== nil and v.name == "BearTrapM" then
+	            esp.Text = "{"..v.Name.."}"
+	            gui:Clone().Parent = v
+	    end
+	end
+	end)
+end)
+
 FirstPage.AddButton("Rake Fan remake Script(by)",function()
 --[[
     Synapse Xen v1.1.2 by Synapse GP
