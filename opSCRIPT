@@ -54,11 +54,14 @@ FirstPage.AddButton("Crate OP Script", function()
 	PP.HoldDuration = 1
 	PP.MaxActivationDistance = 10000
 end)
---[[for i,v in pairs (game.workspace.FlareGuns:GetChildren()) do
-        if  v:FindFirstChild("esp")== nil then
-            esp.Text = "{"..v.Name.."}"
-            gui:Clone().Parent = v
-    end]]--
+
+FirstPage.AddButton("Mythical OP Legendary Fast Fix Power SCRIPT", function()
+	local fix =game.Workspace.PowerStation.InteractionPart
+	local PP = fix.ProximityPrompt
+	PP.HoldDuration = 1
+	PP.MaxActivationDistance = 1000
+end)
+
 FirstPage.AddButton("Timer", function()	
 	if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Timer") then
 		game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Timer"):Destroy()
