@@ -22,7 +22,7 @@ FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(
 		local plrp = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
 		local rakep = game.Workspace:FindFirstChild("Rake").HumanoidRootPart.Position
 		
-		if game:GetService("Players").LocalPlayer.Character.Humanoid.Health <=90 and math.abs(plrp.X - rakep.X) <=30 and math.abs(plrp.Z - rakep.Z) <=30  then
+		if game:GetService("Players").LocalPlayer.Character.Humanoid.Health <=40 and math.abs(plrp.X - rakep.X) <=30 and math.abs(plrp.Z - rakep.Z) <=30  then
 			
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame += Vector3.new(60,5,0)
 		end
@@ -85,11 +85,10 @@ FirstPage.AddButton("Dispaly Rake's Health", function()
 end)
 
 FirstPage.AddButton("Crate OP Script", function()
-	local crate =game.Workspace:FindFirstChild("Crate")
-	crate.Main.ProximityPrompt.HoldDuration = 1
-	crate.Main.ProximityPrompt.MaxActivationDistance = 10000
+	
+	game.Workspace.Crate.Main.ProximityPrompt.HoldDuration = 1
+	game.Workspace.Crate.Main.ProximityPrompt.MaxActivationDistance = 10000
 end)
-
 FirstPage.AddButton("Mythical OP Fast Fix Power SCRIPT(around power station)", function()
 	local fix =game.Workspace.PowerStation.InteractionPart
 	fix.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
