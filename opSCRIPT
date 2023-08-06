@@ -29,12 +29,26 @@ FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(
 	end
 end)
 
+FirstPage.AddToggle("Auto Stunstick Distance", false, function(Value)
+	tog = Value
+	while tog do wait(5)
+		local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
+		stick.Handle.Massless = true
+		stick:FindFirstChild("Handle").Size = Vector3.new(50,50,150)
+		
+	end
+	while not tog do wait(5)
+		local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
+		stick:FindFirstChild("Handle").Size = Vector3.new(0.4,9,0.4)
+	end
+	
+end)
 
 FirstPage.AddButton("Rake Esp", function()
 	if not game.Workspace:FindFirstChild("Rake"):FindFirstChild("电警棍") and game.Workspace:FindFirstChild("Rake") then
 		local Rake = game.Workspace:FindFirstChild("Rake")
 		local hl = Instance.new("Highlight",Rake)
-		hl.FillColor = Color3.fromRGB(85,255,0)
+		hl.FillColor = Color3.fromRGB(120,255,0)
 		hl.OutlineTransparency = 0.5
 		hl.Name = "电警棍"
 	else
@@ -73,7 +87,7 @@ FirstPage.AddButton("Dispaly Rake's Health", function()
 				TextLabel.Font = Enum.Font.SourceSans
 				TextLabel.LineHeight = 1.00
 				TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-				TextLabel.TextSize = 14.000	
+				TextLabel.TextSize = 7.000	
 			end
 			while game.Workspace:FindFirstChild("Rake") and Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
 				local health = Rake:FindFirstChild("NPC").Health
@@ -86,7 +100,7 @@ end)
 
 FirstPage.AddButton("Crate OP Script", function()
 	
-	game.Workspace.Crate.Main.ProximityPrompt.HoldDuration = 1
+	game.Workspace.Crate.Main.ProximityPrompt.HoldDuration = 0.1
 	game.Workspace.Crate.Main.ProximityPrompt.MaxActivationDistance = 10000
 end)
 FirstPage.AddButton("Mythical OP Fast Fix Power SCRIPT(around power station)", function()
@@ -94,7 +108,7 @@ FirstPage.AddButton("Mythical OP Fast Fix Power SCRIPT(around power station)", f
 	fix.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
 	local PP = fix.ProximityPrompt
 	PP.Enabled = true
-	PP.HoldDuration = 1
+	PP.HoldDuration = 0.1
 	PP.MaxActivationDistance = 10000
 end)
 
@@ -155,10 +169,10 @@ FirstPage.AddButton("Timer", function()
 				else
 					hamu = " Day"
 				end
-				text.Text = timer.."s".." into the"..hamu
+				text.Text = math.floor(timer/60).."m "..timer%"60".."s".." into the"..hamu
 
 			else
-				text.Text = timer.."s".." into the"..hamu.."(Now you can defeat Rake)"
+				text.Text = math.floor(timer/60).."m "..timer%"60".."s".." into the"..hamu.."(Now you can defeat Rake)"
 				wait(3)
 			end		
 		end
