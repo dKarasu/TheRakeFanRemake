@@ -22,7 +22,7 @@ FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(
 		local plrp = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
 		local rakep = game.Workspace:FindFirstChild("Rake").HumanoidRootPart.Position
 		
-		if game:GetService("Players").LocalPlayer.Character.Humanoid.Health <=40 and math.abs(plrp.X - rakep.X) <=30 and math.abs(plrp.Z - rakep.Z) <=30  then
+		if game:GetService("Players").LocalPlayer.Character.Humanoid.Health <=60 and math.abs(plrp.X - rakep.X) <=30 and math.abs(plrp.Z - rakep.Z) <=30  then
 			
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame += Vector3.new(60,5,0)
 		end
@@ -42,6 +42,15 @@ FirstPage.AddToggle("Auto Stunstick Distance", false, function(Value)
 		stick:FindFirstChild("Handle").Size = Vector3.new(0.4,9,0.4)
 	end
 	
+end)
+
+FirstPage.AddButton("INFINITE Stamina", function()
+	if not game.Players.LocalPlayer.Character:FindFirstChild("IS") then
+		local infstamina =Instance.new("RemoteEvent",game.Players.LocalPlayer.Character)
+		infstamina.Name = "IS"
+	else
+		game.Players.LocalPlayer.Character:FindFirstChild("IS"):Destroy()
+	end
 end)
 
 FirstPage.AddButton("Rake Esp", function()
