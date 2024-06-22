@@ -32,80 +32,83 @@ end)
 FirstPage.AddToggle("Auto Stunstick Distance", false, function(Value)
 	tog = Value
 	while tog do wait(5)
-		local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
-		stick.Handle.Massless = true
-		stick:FindFirstChild("Handle").Size = Vector3.new(100,50,250)
+    if game.workspace.Info.Phase.Value == 'Night' then 
+		local rake = game.Workspace:FindFirstChild('Rake')
+        rake.HumanoidRootPart.Size = Vector3.new(200,20,200)
 		
 	end
-	while not tog do wait(5)
-		local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
-		stick:FindFirstChild("Handle").Size = Vector3.new(0.4,9,0.4)
-	end
-	
+    end
+	-- while not tog do wait(5)
+	-- 	local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
+	-- 	stick:FindFirstChild("Handle").Size = Vector3.new(0.4,9,0.4)
+	-- end
 end)
 
-FirstPage.AddButton("INFINITE Stamina", function()
-	if not game.Players.LocalPlayer.Character:FindFirstChild("IS") then
-		local infstamina =Instance.new("RemoteEvent",game.Players.LocalPlayer.Character)
-		infstamina.Name = "IS"
-	else
-		game.Players.LocalPlayer.Character:FindFirstChild("IS"):Destroy()
-	end
-end)
-
-FirstPage.AddButton("Rake Esp", function()
-	if not game.Workspace:FindFirstChild("Rake"):FindFirstChild("电警棍") and game.Workspace:FindFirstChild("Rake") then
+FirstPage.AddToggle("Auto Rake Esp", false, function(Value)
+	tog = Value
+	while tog do wait(5)	
+    if game.workspace.Info.Phase.Value == 'Night' then 
+        if not game.Workspace:FindFirstChild("Rake"):FindFirstChild("电警棍") and game.Workspace:FindFirstChild("Rake") then
 		local Rake = game.Workspace:FindFirstChild("Rake")
 		local hl = Instance.new("Highlight",Rake)
 		hl.FillColor = Color3.fromRGB(120,255,0)
 		hl.OutlineTransparency = 0.5
 		hl.Name = "电警棍"
-	else
-		game.Workspace:FindFirstChild("Rake"):FindFirstChild("电警棍"):Destroy()
+
 	end
-
+    end
+	end
+    
 end)
 
-FirstPage.AddButton("Dispaly Rake's Health", function()
-		local Rake = game.Workspace:FindFirstChild("Rake")
-		if not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") then
-			while game.Workspace:FindFirstChild("Rake") and not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
-				local humanoid = Rake:FindFirstChild("NPC")
-				local RootPart = Rake.HumanoidRootPart
-	
-				local display = Instance.new("BillboardGui",RootPart)
-	
-				local TextLabel = Instance.new("TextLabel")
-	
-	
-				display.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-				display.Active = true
-				display.AlwaysOnTop = true
-				display.LightInfluence = 1.000
-				display.Size = UDim2.new(0, 200, 0, 50)
-				display.StudsOffset = Vector3.new(0, 7, 0)
-	
-				TextLabel.Active = true
-				TextLabel.Parent = display
-				TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				TextLabel.BackgroundTransparency = 1.000
-				TextLabel.TextScaled = true
-				TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				TextLabel.BorderSizePixel = 0
-				TextLabel.Size = UDim2.new(0, 200, 0, 50)
-				TextLabel.Font = Enum.Font.SourceSans
-				TextLabel.LineHeight = 1.00
-				TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-				TextLabel.TextSize = 7.000	
-			end
-			while game.Workspace:FindFirstChild("Rake") and Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
-				local health = Rake:FindFirstChild("NPC").Health
-				Rake.HumanoidRootPart:FindFirstChild("BillboardGui").TextLabel.Text = health	
-			end
-		else
-			Rake.HumanoidRootPart:FindFirstChild("BillboardGui"):Destroy()
-		end
+
+
+FirstPage.AddToggle("Auto Show Health", false, function(Value)
+	tog = Value
+	while tog do wait(5)
+        if game.workspace.Info.Phase.Value == 'Night' then 
+            local Rake = game.Workspace:FindFirstChild("Rake")
+                if not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") then
+                    while game.Workspace:FindFirstChild("Rake") and not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
+                        local humanoid = Rake:FindFirstChild("NPC")
+                        local RootPart = Rake.HumanoidRootPart
+            
+                        local display = Instance.new("BillboardGui",RootPart)
+            
+                        local TextLabel = Instance.new("TextLabel")
+            
+            
+                        display.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+                        display.Active = true
+                        display.AlwaysOnTop = true
+                        display.LightInfluence = 1.000
+                        display.Size = UDim2.new(0, 200, 0, 50)
+                        display.StudsOffset = Vector3.new(0, 7, 0)
+            
+                        TextLabel.Active = true
+                        TextLabel.Parent = display
+                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                        TextLabel.BackgroundTransparency = 1.000
+                        TextLabel.TextScaled = true
+                        TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                        TextLabel.BorderSizePixel = 0
+                        TextLabel.Size = UDim2.new(0, 200, 0, 50)
+                        TextLabel.Font = Enum.Font.SourceSans
+                        TextLabel.LineHeight = 1.00
+                        TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+                        TextLabel.TextSize = 7.000	
+                    end
+                    while game.Workspace:FindFirstChild("Rake") and Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
+                        local health = Rake:FindFirstChild("NPC").Health
+                        Rake.HumanoidRootPart:FindFirstChild("BillboardGui").TextLabel.Text = health	
+                    end
+                else
+                Rake.HumanoidRootPart:FindFirstChild("BillboardGui"):Destroy()
+                end
+        end
+    end
 end)
+
 
 FirstPage.AddButton("Crate OP Script", function()
 	
