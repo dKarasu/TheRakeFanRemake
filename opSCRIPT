@@ -402,7 +402,7 @@ FirstPage.AddButton("Traps Esp",function()
 
 	game:GetService("RunService").RenderStepped:Connect(function() ---- loops faster than a while loop :)
 		for i,v in pairs (game.Workspace:GetChildren()) do
-			if  v:FindFirstChild("esp")== nil and v.name == "BearTrapM" then
+			if  v:FindFirstChild("esp")== nil and v.name == "BearTrapModel" then
 				esp.Text = "{"..v.Name.."}"
 				gui:Clone().Parent = v
 			end
