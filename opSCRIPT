@@ -5,20 +5,20 @@ local FirstPage = MainUI.AddPage("Home")
 --local SecondPage = MainUI.AddPage("Teleports")
 
 FirstPage.AddToggle("Auto Day", false, function(Value)
-	tog = Value
-	while tog do wait(5)
+	tog1 = Value
+	while tog1 do wait(5)
 		game.Lighting.ClockTime = 12
 		game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
 	end
-	if not tog and game.Workspace.Info.Phase.Value == "Night"  then
+	if not tog1 and game.Workspace.Info.Phase.Value == "Night"  then
 		game.Lighting.ClockTime = 0
 		game.Lighting.Ambient = Color3.fromRGB(0, 0, 0)
 	end
 end)
 
 FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(Value)
-	tog = Value
-	while tog do wait(1)
+	tog2 = Value
+	while tog2 do wait(1)
 		local plrp = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
 		local rakep = game.Workspace:FindFirstChild("Rake").HumanoidRootPart.Position
 		
@@ -30,23 +30,23 @@ FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(
 end)
 
 FirstPage.AddToggle("Auto Stunstick Distance", false, function(Value)
-	tog = Value
-	while tog do wait(5)
+	tog2 = Value
+	while tog2 do wait(5)
     if game.workspace.Info.Phase.Value == 'Night' then 
 		local rake = game.Workspace:FindFirstChild('Rake')
         rake.HumanoidRootPart.Size = Vector3.new(100,15,100)
 		
 	end
     end
-	-- while not tog do wait(5)
+	-- while not tog2 do wait(5)
 	-- 	local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
 	-- 	stick:FindFirstChild("Handle").Size = Vector3.new(0.4,9,0.4)
 	-- end
 end)
 
 FirstPage.AddToggle("Auto Rake Esp", false, function(Value)
-	tog = Value
-	while tog do wait(5)	
+	tog3 = Value
+	while tog3 do wait(5)	
     if game.workspace.Info.Phase.Value == 'Night' then 
         if not game.Workspace:FindFirstChild("Rake"):FindFirstChild("电警棍") and game.Workspace:FindFirstChild("Rake") then
 		local Rake = game.Workspace:FindFirstChild("Rake")
@@ -64,8 +64,8 @@ end)
 
 
 FirstPage.AddToggle("Auto Show Health", false, function(Value)
-	tog = Value
-	while tog do wait(5)
+	tog4 = Value
+	while tog4 do wait(5)
         if game.workspace.Info.Phase.Value == 'Night' then 
             local Rake = game.Workspace:FindFirstChild("Rake")
                 if not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") then
@@ -109,10 +109,9 @@ FirstPage.AddToggle("Auto Show Health", false, function(Value)
     end
 end)
 
-
-FirstPage.AddToggle("Auto Show Health", false, function(Value)
-	tog = Value
-	while tog do wait(10)
+FirstPage.AddToggle("Auto Scrap Esp", false, function(Value)
+	tog5 = Value
+	while tog5 do wait(15)
         	for i,k in ipairs(game.workspace:GetChildren()) do
   			if k.Name:find('Scrap') and not k:FindFirstChild("Highlight") then
         		local hl = Instance.new("Highlight",k)
