@@ -6,19 +6,22 @@ local FirstPage = MainUI.AddPage("Home")
 
 FirstPage.AddToggle("Auto Day", false, function(Value)
 	tog1 = Value
-	while tog1 do wait(5)
+	while tog1 do 
 		game.Lighting.ClockTime = 12
 		game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+		wait(5)
 	end
+
 	if not tog1 and game.Workspace.Info.Phase.Value == "Night"  then
 		game.Lighting.ClockTime = 0
 		game.Lighting.Ambient = Color3.fromRGB(0, 0, 0)
+
 	end
 end)
 
 FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(Value)
 	tog2 = Value
-	while tog2 do wait(1)
+	while tog2 do 
 		local plrp = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
 		local rakep = game.Workspace:FindFirstChild("Rake").HumanoidRootPart.Position
 		
@@ -26,18 +29,21 @@ FirstPage.AddToggle("Auto prevent rake from attacks cause die", false, function(
 			
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame += Vector3.new(60,5,0)
 		end
+		wait(1)
 	end
 end)
 
 FirstPage.AddToggle("Auto Stunstick Distance", false, function(Value)
 	tog2 = Value
-	while tog2 do wait(5)
+	while tog2 do 
     if game.workspace.Info.Phase.Value == 'Night' then 
 		local rake = game.Workspace:FindFirstChild('Rake')
         rake.HumanoidRootPart.Size = Vector3.new(100,15,100)
 		
 	end
+wait(5)
     end
+
 	-- while not tog2 do wait(5)
 	-- 	local stick = game.Players.LocalPlayer.Character:FindFirstChild("Stunstick") or game.Players.LocalPlayer.Backpack:FindFirstChild("Stunstick")
 	-- 	stick:FindFirstChild("Handle").Size = Vector3.new(0.4,9,0.4)
@@ -46,7 +52,7 @@ end)
 
 FirstPage.AddToggle("Auto Rake Esp", false, function(Value)
 	tog3 = Value
-	while tog3 do wait(5)	
+	while tog3 do 	
     if game.workspace.Info.Phase.Value == 'Night' then 
         if not game.Workspace:FindFirstChild("Rake"):FindFirstChild("电警棍") and game.Workspace:FindFirstChild("Rake") then
 		local Rake = game.Workspace:FindFirstChild("Rake")
@@ -57,6 +63,7 @@ FirstPage.AddToggle("Auto Rake Esp", false, function(Value)
 
 	end
     end
+	wait(5)
 	end
     
 end)
@@ -65,11 +72,11 @@ end)
 
 FirstPage.AddToggle("Auto Show Health", false, function(Value)
 	tog4 = Value
-	while tog4 do wait(5)
+	while tog4 do 
         if game.workspace.Info.Phase.Value == 'Night' then 
             local Rake = game.Workspace:FindFirstChild("Rake")
                 if not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") then
-                    while game.Workspace:FindFirstChild("Rake") and not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
+                    while game.Workspace:FindFirstChild("Rake") and not Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do 
                         local humanoid = Rake:FindFirstChild("NPC")
                         local RootPart = Rake.HumanoidRootPart
             
@@ -97,26 +104,30 @@ FirstPage.AddToggle("Auto Show Health", false, function(Value)
                         TextLabel.LineHeight = 1.00
                         TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
                         TextLabel.TextSize = 7.000	
+wait(1)
                     end
-                    while game.Workspace:FindFirstChild("Rake") and Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do wait(1)
+                    while game.Workspace:FindFirstChild("Rake") and Rake.HumanoidRootPart:FindFirstChild("BillboardGui") do 
                         local health = Rake:FindFirstChild("NPC").Health
-                        Rake.HumanoidRootPart:FindFirstChild("BillboardGui").TextLabel.Text = health	
+                        Rake.HumanoidRootPart:FindFirstChild("BillboardGui").TextLabel.Text = health
+wait(1)
                     end
                 else
                 Rake.HumanoidRootPart:FindFirstChild("BillboardGui"):Destroy()
                 end
         end
+wait(5)
     end
 end)
 
 FirstPage.AddToggle("Auto Scrap Esp", false, function(Value)
 	tog5 = Value
-	while tog5 do wait(15)
+	while tog5 do 
         	for i,k in ipairs(game.workspace:GetChildren()) do
   			if k.Name:find('Scrap') and not k:FindFirstChild("Highlight") then
         		local hl = Instance.new("Highlight",k)
 			end
 		end
+		wait(15)
    	end
 end)
 
