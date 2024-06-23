@@ -110,6 +110,18 @@ FirstPage.AddToggle("Auto Show Health", false, function(Value)
 end)
 
 
+FirstPage.AddToggle("Auto Show Health", false, function(Value)
+	tog = Value
+	while tog do wait(10)
+        	for i,k in ipairs(game.workspace:GetChildren()) do
+  			if k.Name:find('Scrap') and not k:FindFirstChild("Highlight") then
+        		local hl = Instance.new("Highlight",k)
+			end
+		end
+   	end
+end)
+
+
 FirstPage.AddButton("Crate OP Script", function()
 	
 	game.Workspace.Crate.Main.ProximityPrompt.HoldDuration = 0.1
