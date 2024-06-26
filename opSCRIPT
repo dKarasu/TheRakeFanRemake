@@ -38,7 +38,7 @@ FirstPage.AddToggle("Auto Stunstick Distance", false, function(Value)
 	while tog2 do 
     if game.workspace.Info.Phase.Value == 'Night' then 
 		local rake = game.Workspace:FindFirstChild('Rake')
-        rake.HumanoidRootPart.Size = Vector3.new(100,3,100)
+        rake.HumanoidRootPart.Size = Vector3.new(100,10,100)
 		
 	end
 wait(5)
@@ -129,6 +129,12 @@ FirstPage.AddToggle("Auto Scrap Esp", false, function(Value)
 		end
 		wait(15)
    	end
+end)
+
+FirstPage.AddButton("Infinite Stun Stick(Forever and you can't run anymore)", function()
+	local player = game:GetService("Players").Localplayer
+    	player.PlayerScript:WaitForChild('StaminaScript').Disabled = true
+
 end)
 
 
