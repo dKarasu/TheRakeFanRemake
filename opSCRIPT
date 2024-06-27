@@ -133,7 +133,7 @@ end)
 
 FirstPage.AddButton("Infinite Stun Stick(Forever and you can't run anymore)", function()
 	local player = game:GetService("Players").Localplayer
-    	player.PlayerScript:WaitForChild('StaminaScript').Disabled = true
+    	player.PlayerScript:WaitForChild('StaminaScript'):Destroy()
 
 end)
 
