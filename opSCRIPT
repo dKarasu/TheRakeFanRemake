@@ -132,8 +132,8 @@ FirstPage.AddToggle("Auto Scrap Esp", false, function(Value)
 end)
 
 FirstPage.AddButton("Infinite Stun Stick(Forever and you can't run anymore)", function()
-	local player = game:GetService("Players").Localplayer
-    	player.PlayerScript:WaitForChild('StaminaScript'):Destroy()
+	local player = game:GetService("Players").LocalPlayer
+    	player.PlayerScripts:WaitForChild('StaminaScript').Disabled = true
 
 end)
 
