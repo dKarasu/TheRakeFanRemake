@@ -122,7 +122,7 @@ end)
 FirstPage.AddToggle("Auto Scrap Esp", false, function(Value)
 	tog5 = Value
 	while tog5 do 
-        	for i,k in ipairs(game.workspace:GetChildren()) do
+        	for i,k in ipairs(game.workspace.Collectibles.Scrap:GetChildren()) do
   			if k.Name:find('Scrap') and not k:FindFirstChild("Highlight") then
         		local hl = Instance.new("Highlight",k)
 			end
@@ -306,8 +306,8 @@ FirstPage.AddButton("Flare Esp", function()
 	esp.TextColor3 = Color3.fromRGB(esp_settings.colour) -- text colour
 
 	game:GetService("RunService").RenderStepped:Connect(function() ---- loops faster than a while loop :)
-		for i,v in pairs (game.workspace.FlareGuns:GetChildren()) do
-			if  v:FindFirstChild("esp")== nil then
+		for i,v in pairs (game.workspace.Collectibles:GetChildren()) do
+			if  v:FindFirstChild("esp")== nil and v.Name=='FlareGun' then
 				esp.Text = "{"..v.Name.."}"
 				gui:Clone().Parent = v
 			end
